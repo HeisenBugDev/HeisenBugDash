@@ -41,12 +41,18 @@ def get_json_for_job(job_name, build = 'lastBuild')
   JSON.parse(response.body)
 end
 
+def get_artifacts_for_job(job_name, build = 'lastCompletedBuild')
+  
+end
+
 job_mapping.each do |title, jenkins_project|
   current_status = nil
   SCHEDULER.every '10s', :first_in => 0 do |job|
     last_status = current_status
     build_info = get_json_for_job(jenkins_project[:job])
     current_status = build_info["result"]
+    file = get_json_for_job(jenkins_project[:job], 'lastCompletedBuild')
+    fileName = file["artifacts"][0]["fileName"]
     if build_info["building"]
       current_status = "BUILDING"
       percent = get_completion_percentage(jenkins_project[:job])
@@ -57,6 +63,7 @@ job_mapping.each do |title, jenkins_project|
     end
 
     send_event(title, {
+      jenkinsFile: fileName,
       currentResult: current_status,
       lastResult: last_status,
       timestamp: build_info["timestamp"],

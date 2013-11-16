@@ -1,4 +1,4 @@
-<% content_for :title do %>My super sweet dashboard<% end %>
+<% content_for :title do %>HeisenBugDev Dashboard<% end %>
 <div class="gridster">
   <ul>
     <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
@@ -22,8 +22,7 @@
     </li>
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="quantumcraft" data-view="JenkinsBuild" data-title="Jenkins" data-description="A little description of build" data-min="0" data-max="100"></div>
+      <div data-id="job-quantumcraft-dev" data-view="JenkinsBuild" data-title="QuantumCraft-Dev" data-description="QuantumCraft Dev Build" data-min="0" data-max="100"></div>
     </li>
   </ul>
-  <center><div style="font-size: 12px">Try this: curl -d '{ "auth_token": "YOUR_AUTH_TOKEN", "text": "Hey, Look what I can do!" }' \http://<%=request.host%>:<%=request.port%>/widgets/welcome</div></center>
 </div>

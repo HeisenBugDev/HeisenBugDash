@@ -1,3 +1,6 @@
 source 'https://rubygems.org'
 
-gem "dashing", "~> 1.3.1"
+gem 'dashing'
+
+## Remove this if you don't need a twitter widget.
+gem 'twitter'
